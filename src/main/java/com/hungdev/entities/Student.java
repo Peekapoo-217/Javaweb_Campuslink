@@ -11,6 +11,8 @@ public class Student {
 
 	private String address;
 
+	public Student() {}
+	
 	public Student(String nationalID, String fullName, String email, String phoneNumber, String address) {
 		this.nationalID = nationalID;
 		this.fullName = fullName;

@@ -1,8 +1,11 @@
 package com.hungdev.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.hungdev.dtos.GraduateInfoRequest;
+import com.hungdev.entities.Student;
 import com.hungdev.repositories.StudentRepository;
 
 @Service
@@ -18,4 +21,15 @@ public class StudentServiceImpl implements StudentService {
 	public void saveStudent(GraduateInfoRequest request) {
 		studentRepository.saveStudent(request);
 	}
+	
+	@Override
+	public List<Student> searchBasicStudentInfo(String keyword) {
+	    return studentRepository.searchBasicStudentInfo(keyword);
+	}
+
+	@Override
+	public List<Object[]> searchGraduationAndEmployment(String keyword) {
+	    return studentRepository.searchGraduationAndEmployment(keyword);
+	}
+
 }
