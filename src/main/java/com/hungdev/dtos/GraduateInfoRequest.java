@@ -1,12 +1,11 @@
 package com.hungdev.dtos;
 
-import java.sql.Date;
+import java.util.Date;
 
-import org.springframework.lang.NonNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class GraduateInfoRequest {
-	@NonNull
-	private int nationalID;
+	private String nationalID;
 
 	private String fullName;
 
@@ -16,18 +15,21 @@ public class GraduateInfoRequest {
 
 	private String address;
 
-	private int universityID;
+	private String universityID;
 
-	private int majorID;
+	private String majorID;
 
 	private String graduationType;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date graduationDate;
 
 	private String degreeType;
 
-	public GraduateInfoRequest(int nationalID, String fullName, String email, String phoneNumber, String address,
-			int universityID, int majorID, String graduationType, Date graduationDate, String degreeType) {
+	public GraduateInfoRequest() {}
+	
+	public GraduateInfoRequest(String nationalID, String fullName, String email, String phoneNumber, String address,
+			String universityID, String majorID, String graduationType, Date graduationDate, String degreeType) {
 		super();
 		this.nationalID = nationalID;
 		this.fullName = fullName;
@@ -41,11 +43,11 @@ public class GraduateInfoRequest {
 		this.degreeType = degreeType;
 	}
 
-	public int getNationalID() {
+	public String getNationalID() {
 		return nationalID;
 	}
 
-	public void setNationalID(int nationalID) {
+	public void setNationalID(String nationalID) {
 		this.nationalID = nationalID;
 	}
 
@@ -81,19 +83,19 @@ public class GraduateInfoRequest {
 		this.address = address;
 	}
 
-	public int getUniversityID() {
+	public String getUniversityID() {
 		return universityID;
 	}
 
-	public void setUniversityID(int universityID) {
+	public void setUniversityID(String universityID) {
 		this.universityID = universityID;
 	}
 
-	public int getMajorID() {
+	public String getMajorID() {
 		return majorID;
 	}
 
-	public void setMajorID(int majorID) {
+	public void setMajorID(String majorID) {
 		this.majorID = majorID;
 	}
 

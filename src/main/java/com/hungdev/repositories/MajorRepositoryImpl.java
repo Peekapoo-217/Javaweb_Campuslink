@@ -26,7 +26,7 @@ public class MajorRepositoryImpl implements MajorRepository {
 
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) {
-					Major major = new Major(rs.getInt("majorID"), rs.getString("majorName"), rs.getString("majorType"));
+					Major major = new Major(rs.getString("majorID"), rs.getString("majorName"), rs.getString("majorType"));
 					majors.add(major);
 				}
 			}

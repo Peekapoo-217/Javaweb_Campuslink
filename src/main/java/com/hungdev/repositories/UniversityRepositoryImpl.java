@@ -25,7 +25,7 @@ public class UniversityRepositoryImpl implements UniversityRepository {
 				ResultSet rs = stmt.executeQuery()) {
 
 			while (rs.next()) {
-				University u = new University(rs.getInt("universityID"), rs.getString("universityName"),
+				University u = new University(rs.getString("universityID"), rs.getString("universityName"),
 						rs.getString("address"), rs.getString("phoneNumber"));
 				universities.add(u);
 			}

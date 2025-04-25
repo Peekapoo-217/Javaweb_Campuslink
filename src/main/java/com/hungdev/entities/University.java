@@ -1,7 +1,7 @@
 package com.hungdev.entities;
 
 public class University {
-	private int universityID;
+	private String universityID;
 
 	private String universityName;
 
@@ -9,7 +9,7 @@ public class University {
 
 	private String phoneNumber;
 
-	public University(int universityID, String universityName, String address, String phoneNumber) {
+	public University(String universityID, String universityName, String address, String phoneNumber) {
 		this.universityID = universityID;
 		this.universityName = universityName;
 		this.address = address;
@@ -17,11 +17,11 @@ public class University {
 
 	}
 
-	public int getUniversityID() {
+	public String getUniversityID() {
 		return universityID;
 	}
 
-	public void setUniversityID(int universityID) {
+	public void setUniversityID(String universityID) {
 		this.universityID = universityID;
 	}
 

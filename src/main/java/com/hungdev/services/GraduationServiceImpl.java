@@ -1,8 +1,11 @@
 package com.hungdev.services;
 
+import org.springframework.stereotype.Service;
+
 import com.hungdev.dtos.GraduateInfoRequest;
 import com.hungdev.repositories.GraduationRepository;
 
+@Service
 public class GraduationServiceImpl implements GraduationService {
 	private GraduationRepository graduationRepository;
 

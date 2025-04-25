@@ -1,7 +1,7 @@
 package com.hungdev.entities;
 
 public class Student {
-	private int nationalID;
+	private String nationalID;
 
 	private String fullName;
 
@@ -11,7 +11,7 @@ public class Student {
 
 	private String address;
 
-	public Student(int nationalID, String fullName, String email, String phoneNumber, String address) {
+	public Student(String nationalID, String fullName, String email, String phoneNumber, String address) {
 		this.nationalID = nationalID;
 		this.fullName = fullName;
 		this.email = email;
@@ -19,11 +19,11 @@ public class Student {
 		this.address = address;
 	}
 
-	public int getNationalID() {
+	public String getNationalID() {
 		return nationalID;
 	}
 
-	public void setNationalID(int nationalID) {
+	public void setNationalID(String nationalID) {
 		this.nationalID = nationalID;
 	}
 

@@ -3,11 +3,11 @@ package com.hungdev.entities;
 import java.sql.Date;
 
 public class Graduation {
-	private int nationalID;
+	private String nationalID;
 
-	private int universityID;
+	private String universityID;
 
-	private int majorID;
+	private String majorID;
 
 	private String graduationType;
 
@@ -15,7 +15,7 @@ public class Graduation {
 
 	private String degreeType;
 
-	public Graduation(int nationalID, int universityID, int majorID, String graduationType, Date graduationDate,
+	public Graduation(String nationalID, String universityID, String majorID, String graduationType, Date graduationDate,
 			String degreeType) {
 		super();
 		this.nationalID = nationalID;
@@ -26,27 +26,27 @@ public class Graduation {
 		this.degreeType = degreeType;
 	}
 
-	public int getNationalID() {
+	public String getNationalID() {
 		return nationalID;
 	}
 
-	public void setNationalID(int nationalID) {
+	public void setNationalID(String nationalID) {
 		this.nationalID = nationalID;
 	}
 
-	public int getUniversityID() {
+	public String getUniversityID() {
 		return universityID;
 	}
 
-	public void setUniversityID(int universityID) {
+	public void setUniversityID(String universityID) {
 		this.universityID = universityID;
 	}
 
-	public int getMajorID() {
+	public String getMajorID() {
 		return majorID;
 	}
 
-	public void setMajorID(int majorID) {
+	public void setMajorID(String majorID) {
 		this.majorID = majorID;
 	}
 

@@ -1,23 +1,23 @@
 package com.hungdev.entities;
 
 public class Major {
-	private int majorID;
+	private String majorID;
 
 	private String majorName;
 
 	private String majorType;
 
-	public Major(int majorID, String majorName, String majorType) {
+	public Major(String majorID, String majorName, String majorType) {
 		this.majorID = majorID;
 		this.majorName = majorName;
 		this.majorType = majorType;
 	}
 
-	public int getMajorID() {
+	public String getMajorID() {
 		return majorID;
 	}
 
-	public void setMajorID(int majorID) {
+	public void setMajorID(String majorID) {
 		this.majorID = majorID;
 	}
 
