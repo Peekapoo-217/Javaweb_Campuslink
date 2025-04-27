@@ -34,32 +34,36 @@ public class StudentRepositoryImpl implements StudentRepository {
 
 	@Override
 	public List<Student> searchBasicStudentInfo(String keyword) {
-	    List<Student> students = new ArrayList();
-	    String sql = "SELECT * FROM student WHERE FullName LIKE ? OR NationalID LIKE ?";
+		List<Student> students = new ArrayList();
+		String sql = "SELECT * FROM student WHERE FullName LIKE ? OR NationalID LIKE ?";
 
-	    try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement ptmt = conn.prepareStatement(sql)) {
-	        ptmt.setString(1, "%" + keyword + "%");
-	        ptmt.setString(2, "%" + keyword + "%");
-	        ResultSet rs = ptmt.executeQuery();
-	        while (rs.next()) {
-	            Student s = new Student();
-	            s.setNationalID(rs.getString("NationalID"));
-	            s.setFullName(rs.getString("FullName"));
-	            s.setEmail(rs.getString("Email"));
-	            s.setPhoneNumber(rs.getString("PhoneNumber"));
-	            s.setAddress(rs.getString("Address"));
-	            students.add(s);
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return students;
+		try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement ptmt = conn.prepareStatement(sql)) {
+			ptmt.setString(1, "%" + keyword + "%");
+			ptmt.setString(2, "%" + keyword + "%");
+			ResultSet rs = ptmt.executeQuery();
+			while (rs.next()) {
+				Student s = new Student();
+				s.setNationalID(rs.getString("NationalID"));
+				s.setFullName(rs.getString("FullName"));
+				s.setEmail(rs.getString("Email"));
+				s.setPhoneNumber(rs.getString("PhoneNumber"));
+				s.setAddress(rs.getString("Address"));
+				students.add(s);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return students;
 	}
 
 	@Override
 	public List<Object[]> searchGraduationAndEmployment(String keyword) {
 		List<Object[]> results = new ArrayList<>();
-		String sql = "SELECT s.NationalID, s.FullName, g.MajorID, g.UniversityID, e.MajorID, e.CompanyAddress, e.DurationFROM student sJOIN graduation g ON s.NationalID = g.NationalIDJOIN employment e ON s.NationalID = e.NationalIDWHERE s.FullName LIKE ? OR s.NationalID LIKE ?";
+		String sql = "SELECT s.NationalID, s.FullName, g.MajorID, g.UniversityID, e.MajorID, e.CompanyAddress, e.Duration " +
+	             "FROM student s " +
+	             "JOIN graduation g ON s.NationalID = g.NationalID " +
+	             "JOIN employment e ON s.NationalID = e.NationalID " +
+	             "WHERE s.FullName LIKE ? OR s.NationalID LIKE ?";
 
 		try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement ptmt = conn.prepareStatement(sql)) {
 			ptmt.setString(1, "%" + keyword + "%");
