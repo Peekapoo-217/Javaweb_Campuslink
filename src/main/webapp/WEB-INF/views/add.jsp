@@ -84,7 +84,7 @@
             </c:if>
 
             <label>National ID:</label>
-            <input type="text" name="nationalID" />
+            <input type="text" name="nationalID"/>
 
             <label>Full Name:</label>
             <input type="text" name="fullName" />
@@ -102,7 +102,8 @@
             <select name="majorID">
                 <option value="0">-- Select Major --</option>
                 <c:forEach var="m" items="${majors}">
-                    <option value="${m.majorID}">${m.majorName}</option>
+<%--                     <option value="${m.majorID}">${m.majorName}</option> --%>
+					<option value="${m.majorID}" ${m.majorID == student.majorID ? 'selected' : ''}>
                 </c:forEach>
             </select>
 
@@ -137,6 +138,11 @@
 
         </form>
     </fieldset>
+    
+    <a href="${pageContext.request.contextPath}/search_form">
+    	<button type="button">Go to Search Form</button>
+	</a>
+    
 
     <script>
     function validationForm() {
@@ -145,7 +151,8 @@
         const universityID = form["universityID"].value.trim();
         const majorID = form["majorID"].value;
         const graduationDate = form["graduationDate"]?.value;
-
+        const startDate = form["startDate"]?.value; 
+        
         if (nationID === "") {
             alert("National ID is required");
             return false;
@@ -161,8 +168,15 @@
             return false;
         }
 
-        if (!graduationDate) {
+/*         if (!graduationDate) {
             alert("Graduation Date is required");
+            return false;
+        } */
+        const start = new Date(startDate);
+        const graduation = new Date(graduationDate);
+
+        if (graduation <= start) {
+            alert("Graduation Date must be after Start Date");
             return false;
         }
 

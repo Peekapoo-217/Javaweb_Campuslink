@@ -32,4 +32,20 @@ public class StudentServiceImpl implements StudentService {
 	    return studentRepository.searchGraduationAndEmployment(keyword);
 	}
 
+	@Override
+	public Student getStudentByNationalID(String nationalID) {
+	    return studentRepository.getStudentByNationalID(nationalID);
+	}
+
+	@Override
+	public void updateStudent(Student student) {
+	    studentRepository.updateStudent(student);
+	}
+
+	@Override
+	public void deleteStudentByNationalID(String nationalID) {
+	    studentRepository.deleteStudentByNationalID(nationalID);
+	}
+
+	
 }

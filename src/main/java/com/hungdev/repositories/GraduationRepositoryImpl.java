@@ -29,4 +29,16 @@ public class GraduationRepositoryImpl implements GraduationRepository {
 			e.printStackTrace();
 		}
 	}
+	
+    @Override
+    public void deleteGraduationByNationalID(String nationalID) {
+        String sql = "DELETE FROM graduation WHERE NationalID = ?";
+        try (Connection conn = DatabaseConfig.getConnection();
+             PreparedStatement ptmt = conn.prepareStatement(sql)) {
+            ptmt.setString(1, nationalID);
+            ptmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

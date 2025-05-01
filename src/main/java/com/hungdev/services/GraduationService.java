@@ -7,4 +7,5 @@ import com.hungdev.dtos.GraduateInfoRequest;
 @Service
 public interface GraduationService {
 	void saveGraduation(GraduateInfoRequest request);
+    void deleteGraduationByNationalID(String nationalID);
 }

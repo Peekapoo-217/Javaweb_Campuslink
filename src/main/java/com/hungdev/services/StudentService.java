@@ -12,5 +12,7 @@ public interface StudentService {
 	void saveStudent(GraduateInfoRequest request);
 	List<Student> searchBasicStudentInfo(String keyword);
 	List<Object[]> searchGraduationAndEmployment(String keyword);
-
+    Student getStudentByNationalID(String nationalID);
+    void updateStudent(Student student);
+    void deleteStudentByNationalID(String nationalID); 
 }

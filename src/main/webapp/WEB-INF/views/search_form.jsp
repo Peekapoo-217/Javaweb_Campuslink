@@ -72,6 +72,8 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Address</th>
+                <th>Action</th>
+                <th>Delete</th>
             </tr>
             <c:forEach var="s" items="${students}">
                 <tr>
@@ -80,6 +82,12 @@
                     <td>${s.email}</td>
                     <td>${s.phoneNumber}</td>
                     <td>${s.address}</td>
+					<td>
+            			<a href="${pageContext.request.contextPath}/edit/${s.nationalID}">Edit</a> <!-- trỏ tới method edit cùng id trong HomeController --> 
+        			</td>
+        			<td>
+            			<a href="${pageContext.request.contextPath}/delete/${s.nationalID}">Delete</a>
+        			</td>
                 </tr>
             </c:forEach>
         </table>

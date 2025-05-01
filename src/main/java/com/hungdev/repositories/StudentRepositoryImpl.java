@@ -85,5 +85,64 @@ public class StudentRepositoryImpl implements StudentRepository {
 		}
 		return results;
 	}
+	
+	@Override
+	public Student getStudentByNationalID(String nationalID) {
+	    String sql = "SELECT * FROM student WHERE NationalID = ?";
+	    
+	    try (Connection conn = DatabaseConfig.getConnection(); 
+	         PreparedStatement ptmt = conn.prepareStatement(sql)) {
+	        
+	        ptmt.setString(1, nationalID);
+	        ResultSet rs = ptmt.executeQuery();
+	        
+	        if (rs.next()) {
+	            Student s = new Student();
+	            s.setNationalID(rs.getString("NationalID"));
+	            s.setFullName(rs.getString("FullName"));
+	            s.setEmail(rs.getString("Email"));
+	            s.setPhoneNumber(rs.getString("PhoneNumber"));
+	            s.setAddress(rs.getString("Address"));
+	            return s; // trả về student nếu tìm thấy
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return null; // nếu không tìm thấy thì trả về null
+	}
 
+	
+	@Override
+	public void updateStudent(Student student) {
+	    String sql = "UPDATE student SET FullName = ?, Email = ?, PhoneNumber = ?, Address = ? WHERE NationalID = ?";
+	    
+	    try (Connection conn = DatabaseConfig.getConnection();
+	         PreparedStatement ptmt = conn.prepareStatement(sql)) {
+	        
+	        ptmt.setString(1, student.getFullName());
+	        ptmt.setString(2, student.getEmail());
+	        ptmt.setString(3, student.getPhoneNumber());
+	        ptmt.setString(4, student.getAddress());
+	        ptmt.setString(5, student.getNationalID());
+	        ptmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	@Override
+	public void deleteStudentByNationalID(String nationalID) {
+	    String sql = "DELETE FROM student WHERE NationalID = ?";
+	    try (Connection conn = DatabaseConfig.getConnection();
+	         PreparedStatement ptmt = conn.prepareStatement(sql)) {
+	        ptmt.setString(1, nationalID);
+	        ptmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
+
+	
 }

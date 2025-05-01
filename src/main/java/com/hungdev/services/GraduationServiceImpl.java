@@ -19,4 +19,9 @@ public class GraduationServiceImpl implements GraduationService {
 		graduationRepository.saveGraduation(request);
 	}
 
+
+    @Override
+    public void deleteGraduationByNationalID(String nationalID) {
+        graduationRepository.deleteGraduationByNationalID(nationalID);
+    }
 }
